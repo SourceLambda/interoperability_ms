@@ -1,0 +1,129 @@
+<definitions xmlns:tns="us.world_corp.my_soap_forum.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="us.world_corp.my_soap_forum.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="let you post/retrieve online message by SOAP protocol" targetNamespace="us.world_corp.my_soap_forum.wsdl">
+<!--  definition of datatypes  -->
+<types>
+    <schema xmlns="http://www.w3.org/2000/10/XMLSchema" targetNamespace="us.world_corp.my_soap_forum.xsd">
+        <element name="nickname">
+            <complexType>
+                <all>
+                    <element name="value" type="string"/>
+                </all>
+            </complexType>
+        </element>
+        <element name="message">
+            <complexType>
+                <all>
+                    <element name="value" type="string"/>
+                </all>
+            </complexType>
+        </element>
+        <element name="resultcode">
+            <complexType>
+                <all>
+                    <element name="value" type="int"/>
+                </all>
+            </complexType>
+        </element>
+        <element name="number">
+            <complexType>
+                <all>
+                    <element name="value" type="int"/>
+                </all>
+            </complexType>
+        </element>
+    </schema>
+</types>
+<!--  response messages  -->
+<message name="returns_resultcode">
+    <part name="resultcode" type="xsd:resultcode"/>
+</message>
+<message name="returns_number">
+    <part name="number" type="xsd:number"/>
+</message>
+<message name="returns_message">
+    <part name="message" type="xsd:message"/>
+</message>
+<!--  request messages  -->
+<message name="post_message">
+    <part name="nickname" type="xsd:nickname"/>
+    <part name="message" type="xsd:message"/>
+</message>
+<message name="get_number_of_messages">
+    <part name="nickname" type="xsd:nickname"/>
+</message>
+<message name="retrieve_message">
+    <part name="nickname" type="xsd:nickname"/>
+    <part name="number" type="xsd:number"/>
+</message>
+<message name="retrieve_last_message">
+    <part name="nickname" type="xsd:nickname"/>
+    <part name="number" type="xsd:number"/>
+</message>
+<!--  server's services  -->
+<portType name="my SOAP forum">
+    <operation name="post_message">
+        <input message="tns:post_message"/>
+        <output message="tns:returns_resultcode"/>
+    </operation>
+    <operation name="get_number_of_messages">
+        <input message="tns:get_number_of_messages"/>
+        <output message="tns:returns_number"/>
+    </operation>
+    <operation name="retrieve_message">
+        <input message="tns:retrieve_message"/>
+        <output message="tns:returns_message"/>
+    </operation>
+    <operation name="retrieve_last_message">
+        <input message="tns:retrieve_last_message"/>
+        <output message="tns:returns_message"/>
+    </operation>
+</portType>
+<!--  server encoding  -->
+<binding name="my SOAP forum_webservices" type="tns:my SOAP forum">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="post_message">
+        <soap:operation soapAction="urn:xmethods-delayed-quotes#post_message"/>
+        <input>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </input>
+        <output>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </output>
+    </operation>
+    <operation name="get_number_of_messages">
+        <soap:operation soapAction="urn:xmethods-delayed-quotes#get_number_of_messages"/>
+        <input>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </input>
+        <output>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </output>
+    </operation>
+    <operation name="retrieve_message">
+    <soap:operation soapAction="urn:xmethods-delayed-quotes#retrieve_message"/>
+        <input>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </input>
+        <output>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </output>
+    </operation>
+    <operation name="retrieve_last_message">
+        <soap:operation soapAction="urn:xmethods-delayed-quotes#retrieve_last_message"/>
+        <input>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </input>
+        <output>
+            <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </output>
+    </operation>
+</binding>
+<!--  access to service provider  -->
+<service name="exemple">
+<port name="exemple_0" binding="my SOAP forum_webservices">
+    <soap:address location="http://127.0.0.1./test_soap/endpoint1.php"/>
+</port>
+<port name="exemple_1" binding="my SOAP forum_webservices">
+    <soap:address location="http://127.0.0.1./test_soap/endpoint2.php"/>
+</port>
+</service>
+</definitions>
