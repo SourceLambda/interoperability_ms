@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<definitions name="PostsService"
+             targetNamespace="http://www.examples.com/wsdl/PostsService.wsdl"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.examples.com/wsdl/PostsService.wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <message name="GetPostsRequest">
+        <part name="name" type="xsd:string"/>
+    </message>
+    <message name="GetPostsResponse">
+        <part name="name" type="xsd:string"/>
+    </message>
+    <portType name="PostsPort">
+        <operation name="GetPosts">
+            <input message="tns:GetPostsRequest"/>
+            <output message="tns:GetPostsResponse"/>
+        </operation>
+    </portType>
+    <binding name="GetPosts_Binding" type="tns:PostsPort">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetPosts">
+            <soap:operation soapAction="GetPosts"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:PostsService" use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:PostsService" use="encoded"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="PostsService">
+        <documentation>xd</documentation>
+        <port binding="tns:GetPosts_Binding" name="PostsPort">
+            <soap:address location = "http://localhost:8080/GetPosts/" />
+        </port>
+    </service>
+</definitions>
