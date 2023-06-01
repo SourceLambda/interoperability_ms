@@ -5,11 +5,44 @@
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:tns="http://www.examples.com/wsdl/PostsService.wsdl"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <types>
+    |   <xs:schema elementFormDefault="qualified" targetNamespace="https://footballpool.dataaccess.eu">
+            <xs:complexType name="tPosts">
+                <xs:sequence>
+                    <xs:element name="sTitle" type="xs:string"/>
+                    <xs:element name="iCategoryID" type="xs:int"/>
+                    <xs:element name="sImage" type="xs:string"/>
+                    <xs:element name="dCreation_date" type="xs:date"/>
+                    <xs:element name="iUnits" type="xs:int"/>
+                    <xs:element name="fPrice" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfPosts">
+                <xs:sequence>
+                    <xs:element name="tAllPosts" type="tns:tPosts" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="AllPostsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="AllPostsResult" type="tns:ArrayOfPosts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PostsPage">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="iPage" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
     <message name="GetPostsRequest">
-        <part name="name" type="xsd:string"/>
+        <part name="parameters" element="tns:PostsPage"/>
     </message>
     <message name="GetPostsResponse">
-        <part name="name" type="xsd:string"/>
+        <part name="parameters" element="tns:AllPostsResponse"/>
     </message>
     <portType name="PostsPort">
         <operation name="GetPosts">
