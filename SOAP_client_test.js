@@ -1,6 +1,6 @@
 const soap = require('soap');
 const url = 'http://localhost:8080/GetPosts?wsdl';
-const args = { name: 'value'};
+const args = { name: 'camilo'};
 
 soap.createClient(url, function(err, client) {
     if(err) {
