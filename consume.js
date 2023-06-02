@@ -1,32 +1,33 @@
-const soap = require("soap");
-const url = "https://untorneo-interface-4yiv26znhq-uc.a.run.app/ws";
+require('dotenv').config()
+
+const url = process.env.INTERFACE_2F_URL;
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
+const axios = require('axios');
 
-const consumes = () => {
-  try {
-    soap.createClient(url, function (err, client) {
-      if (err) {
-          console.error(err);
-      } else {
-          client.getVenuesRequest({}, function (err, result) {
-              if (err) {
-                  console.error(err);
-              } else {
-                  console.log(result);
-              }
-          });
-      }
-  });
+const xmlData = fs.readFileSync('request.xml', 'utf8');
 
-  } catch (error) {
-    console.log("Error: ", error);
-    return error;
-  }
+const consumes = async () => {
+    try {
+        const algo = await axios({
+            method: 'POST',
+            url: url,
+            headers: {
+                'Content-Type': 'text/xml'
+            },
+            data: xmlData
+        })
+        return algo.data
+    }
+    catch (err) {
+        console.log(err)
+    }
 };
-router.get("/", (req, res) => {
-  let result =  consumes();
-  res.send(result);
+
+router.get("/", async (req, res) => {
+    let result = await consumes();
+    res.json(result);
 });
 
 module.exports = router;

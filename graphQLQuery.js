@@ -1,7 +1,9 @@
 const axios = require('axios');
 
-const HOST = 'localhost';
-const PORT = '5000';
+require('dotenv').config();
+
+const HOST = process.env.API_GATEWAY_HOST || 'localhost';
+const PORT = process.env.API_GATEWAY_PORT || '5000';
 
 const graphQLAddress = `http://${HOST}:${PORT}/graphql`;
 

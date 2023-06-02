@@ -49,12 +49,10 @@ const postsService = {
                     const response = await GraphQLQuery(query);
 
                     if (response.errors) {
-                        console.log(response.errors)
                         return Promise.reject({msg: "Error fetching API Gateway post data", error: json.errors})
                     }
 
                     return {
-                        //name: args.name.$value + ' --- result',
                         //parameters: examplePosts()
                         parameters: response.data.data.allPosts
                     }
@@ -65,8 +63,8 @@ const postsService = {
             }
         },
     },
-    //archivo wsdl asld
-    wsdl: wsdlService, // or xml (both options are valid)
+    // wsdl file :O
+    wsdl: wsdlService,
 };
 
 module.exports = { service: postsService, xml: wsdlService };
