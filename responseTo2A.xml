@@ -1,0 +1,40 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://www.examples.com/wsdl/PostsService.wsdl">
+   <soap:Body>
+      <tns:GetPostsResponse>
+         <tns:parameters>
+            <tns:parameters>
+               <Title>Guapo ingeniero</Title>
+               <CategoryID>5</CategoryID>
+               <Image>https://firebasestorage.googleapis.com/v0/b/sourcelambda-post-st-e89b8.appspot.com/o/images%2F54be1abe-9934-425a-9273-4398c83dabfe.jpeg?alt=media&amp;token=79951728-f9f2-4a24-8fa0-be4310fb4acd</Image>
+               <Creation_date>2023-05-22T00:00:00Z</Creation_date>
+               <Units>1</Units>
+               <Price>560000</Price>
+            </tns:parameters>
+            <tns:parameters>
+               <Title>Celular iPhone 14 Pro 128GB eSIM 6GB RAM A16Bionic Camara 48MP Morado</Title>
+               <CategoryID>10</CategoryID>
+               <Image>https://firebasestorage.googleapis.com/v0/b/:]:][]:]c]a]:]s]a]i]:]c]:]s]a]i][]c]:]s]c]i][]i]i]a]:]c]:]c]a]s]s]:]i][]:][]c][]s]s][]i]:]i]s]:]a]s]s]s]:]:]c]i]s]/o/images%2Fftqf6bq6ihx-bcj29bakw6.jpeg?alt=media&amp;token=e30vfrht548brxvhhhvqcdy2d-agppa7u9y</Image>
+               <Creation_date>2023-07-10T00:00:00Z</Creation_date>
+               <Units>20</Units>
+               <Price>10500</Price>
+            </tns:parameters>
+            <tns:parameters>
+               <Title>Apple iPhone 12 Pro 128GB - Negro</Title>
+               <CategoryID>10</CategoryID>
+               <Image>https://firebasestorage.googleapis.com/v0/b/:]:][]:]c]a]:]s]a]i]:]c]:]s]a]i][]c]:]s]c]i][]i]i]a]:]c]:]c]a]s]s]:]i][]:][]c][]s]s][]i]:]i]s]:]a]s]s]s]:]:]c]i]s]/o/images%2Fftqf6bq6ihx-bcj29bakw6.jpeg?alt=media&amp;token=e30vfrht548brxvhhhvqcdy2d-agppa7u9y</Image>
+               <Creation_date>2023-07-10T00:00:00Z</Creation_date>
+               <Units>20</Units>
+               <Price>10500</Price>
+            </tns:parameters>
+            <tns:parameters>
+               <Title>AirPods Pro Portatil Apple AirPods Pro Apple</Title>
+               <CategoryID>9</CategoryID>
+               <Image>https://firebasestorage.googleapis.com/v0/b/:]:][]:]c]a]:]s]a]i]:]c]:]s]a]i][]c]:]s]c]i][]i]i]a]:]c]:]c]a]s]s]:]i][]:][]c][]s]s][]i]:]i]s]:]a]s]s]s]:]:]c]i]s]/o/images%2Fftqf6bq6ihx-bcj29bakw6.jpeg?alt=media&amp;token=e30vfrht548brxvhhhvqcdy2d-agppa7u9y</Image>
+               <Creation_date>2023-07-10T00:00:00Z</Creation_date>
+               <Units>20</Units>
+               <Price>10500</Price>
+            </tns:parameters>
+         </tns:parameters>
+      </tns:GetPostsResponse>
+   </soap:Body>
+</soap:Envelope>
