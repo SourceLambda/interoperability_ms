@@ -6,7 +6,7 @@
              xmlns:tns="http://www.examples.com/wsdl/PostsService.wsdl"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <types>
-    |   <xs:schema elementFormDefault="qualified" targetNamespace="https://footballpool.dataaccess.eu">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.examples.com/wsdl/PostsService.wsdl">
             <xs:complexType name="tPosts">
                 <xs:sequence>
                     <xs:element name="sTitle" type="xs:string"/>
@@ -63,9 +63,9 @@
         </operation>
     </binding>
     <service name="PostsService">
-        <documentation>xd</documentation>
+        <documentation>SourceLambda Web Service for public information about products from the website.</documentation>
         <port binding="tns:GetPosts_Binding" name="PostsPort">
-            <soap:address location = "http://localhost:8080/GetPosts/" />
+            <soap:address location = "http://localhost:7070/GetPosts/" />
         </port>
     </service>
 </definitions>
