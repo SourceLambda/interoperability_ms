@@ -65,7 +65,7 @@
     <service name="PostsService">
         <documentation>SourceLambda Web Service for public information about products from the website.</documentation>
         <port binding="tns:GetPosts_Binding" name="PostsPort">
-            <soap:address location = "http://localhost:7070/GetPosts/" />
+            <soap:address location = "http://35.208.88.188/GetPosts/" />
         </port>
     </service>
 </definitions>
